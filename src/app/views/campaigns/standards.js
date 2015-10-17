@@ -10,7 +10,7 @@
             IO({
                 url: 'api/list.json',
                 dataType: 'json',
-                success: function (data) {
+                success:me.wrapAsync(function(data) {
                     var loc = me.location;
                     var sortby = loc.get('sortby');
                     var sortkey = loc.get('sortkey');
@@ -32,10 +32,10 @@
                         sortDesc: sortby == 'desc'
                     });
                     me.setHTML(me.id, html);
-                },
-                error: function (xhr, msg) {
+                }),
+                error:me.wrapAsync(function(xhr,msg) {
                     me.setHTML(me.id, msg); //出错时，直接显示错误
-                }
+                })
             });
         },
         'sort<click>':function(e){
