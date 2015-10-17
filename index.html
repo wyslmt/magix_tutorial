@@ -1,0 +1,31 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Step 0 - Magix BP</title>
+    <link rel="stylesheet" type="text/css" href="http://g.tbcdn.cn/thx/cube/1.0.7/cube-min.css">
+</head>
+<body>
+    <script src="http://localhost/kissy-1.4.8/build/seed-min.js"></script>
+    <script src="http://localhost/magix/combos/1.2/kissy/kissy-magix-min.js"></script>
+    <script>
+  KISSY.config({
+      packages: [
+          {
+              name: 'app',
+              path: './src/',//开发阶段我们把放有源码放在src目录中，方便后面的打包上线
+              debug: true
+          }
+      ]
+  })
+  KISSY.use('magix/magix', function(S, Magix) {
+      Magix.start({
+          iniFile: 'app/ini',
+          error: function(e) {
+            throw e
+          }
+      })
+  })
+    </script>
+</body>
+</html>
